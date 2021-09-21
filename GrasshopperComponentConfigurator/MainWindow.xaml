@@ -3,6 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GrasshopperComponentConfigurator"
+        xmlns:sys="clr-namespace:System;assembly=System"
+        xmlns:models="clr-namespace:GrasshopperComponentConfigurator.Models"
         mc:Ignorable="d"
         Title="MainWindow"
         Height="548"
@@ -56,12 +59,30 @@
             <Label Content="Component Parameters" />
             <DataGrid Name="ParametersDataGrid" ItemsSource= "{Binding ParameterData}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Usage" Width="*" Binding="{Binding Usage}"/>
-                    <DataGridTextColumn Header="Type" Width="*" Binding="{Binding ParamType}"/>
-                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                    <DataGridTemplateColumn Header="Usage" Width="*">
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:Usage}}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Type" Width="*">
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamType}}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Nickname" Width="*" Binding="{Binding Nickname}"/>
                     <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
-                    <DataGridTextColumn Header="Access" Width="*" Binding="{Binding Access}"/>
+                    <DataGridTemplateColumn Header="Access" Width="*">
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamAccess}}}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellEditingTemplate>
+                    </DataGridTemplateColumn>
                 </DataGrid.Columns>
 
             </DataGrid>

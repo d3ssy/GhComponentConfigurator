@@ -2,7 +2,6 @@
 {
     public enum ParamType
     {
-        Unknown = 0,
         Point,
         Curve,
         Plane,

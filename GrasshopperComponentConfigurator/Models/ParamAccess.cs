@@ -2,7 +2,6 @@
 {
     public enum ParamAccess
     {
-        Unknown = 0,
         List,
         Item
     }

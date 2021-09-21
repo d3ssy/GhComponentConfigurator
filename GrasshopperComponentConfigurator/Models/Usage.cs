@@ -2,7 +2,6 @@
 {
     public enum Usage
     {
-        Unknown = 0,
         Input,
         Output
     }
