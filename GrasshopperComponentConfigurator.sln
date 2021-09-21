@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrasshopperComponentConfigurator", "GrasshopperComponentConfigurator\GrasshopperComponentConfigurator.csproj", "{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrasshopperComponentConfigurator.Tests", "GrasshopperComponentConfigurator.Tests\GrasshopperComponentConfigurator.Tests.csproj", "{09792416-40E5-4463-BCF2-6BD05DA79D22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0179299-C785-492F-8B13-DC8438977151}
+	EndGlobalSection
+EndGlobal
