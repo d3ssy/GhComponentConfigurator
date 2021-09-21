@@ -17,6 +17,9 @@
         MouseDown="MainWindow_OnMouseDown">
 
     <Grid Height="548" VerticalAlignment="Center">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="20" Direction="315" ShadowDepth="10" Opacity="0.45"/>
+        </Grid.Effect>
 
         <Grid.RowDefinitions>
             <RowDefinition Name="Row0" Height="20"/>
