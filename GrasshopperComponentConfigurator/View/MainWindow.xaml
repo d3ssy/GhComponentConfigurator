@@ -39,26 +39,26 @@
         <Border CornerRadius="35" BorderBrush="DimGray" Background="DarkGray" BorderThickness="2" Grid.RowSpan="4" Grid.ColumnSpan="4"/>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,5,0">
-            <Label Content="Name"/>
+            <Label Content="Name" FontSize="14" FontWeight="Bold" Foreground="White"/>
             <TextBox Name="ComponentNameBox" Text ="{Binding Path=ComponentData.Name}"/>
-            <Label Content="Nickname"/>
+            <Label Content="Nickname" FontSize="14" FontWeight="Bold" Foreground="White"/>
             <TextBox Name="ComponentNicknameBox" Text ="{Binding Path=ComponentData.Nickname}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0,0,0">
-            <Label Content="Category"/>
+            <Label Content="Category" Foreground="White" FontWeight="Bold" FontSize="14"/>
             <TextBox Name="ComponentCategoryBox" Text ="{Binding Path=ComponentData.Category}"/>
-            <Label Content="Sub-category"/>
+            <Label Content="Sub-category" Foreground="White" FontWeight="Bold" FontSize="14"/>
             <TextBox Name="ComponentSubCategoryBox" Text ="{Binding Path=ComponentData.SubCategory}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <Label Content="Description"/>
+            <Label Content="Description" FontSize="14" FontWeight="Bold" Foreground="White"/>
             <TextBox Name="ComponentDescriptionBox" Text ="{Binding Path=ComponentData.Description}"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,0">
-            <Label Content="Component Parameters" />
+            <Label Content="Component Parameters" FontSize="14" FontWeight="Bold" Foreground="White" />
             <DataGrid Name="ParametersDataGrid" ItemsSource= "{Binding ParameterData}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True">
                 <DataGrid.Columns>
 
@@ -110,7 +110,7 @@
         </StackPanel>
 
         <Button Style="{DynamicResource RoundedCornerButton}"
-                Height="30"
+                Height="50"
                 Content="GENERATE GH TEMPLATE"
                 Cursor="Hand"
                 Click="GenerateComponentTemplate_OnClick" 
@@ -118,7 +118,7 @@
                 Grid.Column="0"
                 Grid.ColumnSpan ="4"
                 Grid.Row="4" 
-                Margin="0,25,0,0">
+                Margin="55,25,55,0" Foreground="White" FontWeight="Bold" FontSize="14">
         </Button>
     </Grid>
 
