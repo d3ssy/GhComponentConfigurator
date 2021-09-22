@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using GrasshopperComponentConfigurator.Models;
-using GrasshopperComponentConfigurator.Templates;
 using GrasshopperComponentConfigurator.ViewModel;
+using Microsoft.Win32;
 
-namespace GrasshopperComponentConfigurator
+namespace GrasshopperComponentConfigurator.View
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -34,7 +20,15 @@ namespace GrasshopperComponentConfigurator
 
         private void GenerateComponentTemplate_OnClick(object sender, RoutedEventArgs e)
         {
-            _viewModel.WriteTemplateToFile(_viewModel.GenerateTemplate());
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.DefaultExt = ".cs";
+            saveFileDialog.Filter = "C# file (*.cs)|*.cs";
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var path = saveFileDialog.FileName;
+                _viewModel.WriteTemplateToFile(_viewModel.GenerateTemplate(), path);
+            }
         }
 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)

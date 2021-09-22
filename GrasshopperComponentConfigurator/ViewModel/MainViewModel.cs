@@ -8,6 +8,7 @@ using System.Windows.Data;
 using GrasshopperComponentConfigurator.Models;
 using GrasshopperComponentConfigurator.Templates;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Win32;
 
 namespace GrasshopperComponentConfigurator.ViewModel
 {
@@ -39,16 +40,14 @@ namespace GrasshopperComponentConfigurator.ViewModel
             return template.TransformText();
         }
 
-        public void WriteTemplateToFile(string templateString)
+        public void WriteTemplateToFile(string templateString, string filePath)
         {
-            string outputPath = System.IO.Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "GhComponentTemplateTest.cs");
-
-            if (File.Exists(outputPath))
+            if (File.Exists(filePath))
             {
-                File.Delete(outputPath);
+                File.Delete(filePath);
             }
 
-            File.WriteAllText(outputPath, templateString);
+            File.WriteAllText(filePath, templateString);
         }
     }
 }
