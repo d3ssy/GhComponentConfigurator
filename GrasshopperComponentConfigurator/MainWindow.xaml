@@ -62,34 +62,52 @@
             <Label Content="Component Parameters" />
             <DataGrid Name="ParametersDataGrid" ItemsSource= "{Binding ParameterData}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Usage" Width="*">
+
+                    <DataGridTemplateColumn Header="Usage" Width="*" >
                         <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:Usage}}}"/>
+                            <DataTemplate >
+                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:Usage}}}" SelectedItem="{Binding Path=Usage}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Type" Width="*">
-                        <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamType}}}"/>
+                                <TextBlock  Text="{Binding Path=Usage}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Type" Width="*" >
+                        <DataGridTemplateColumn.CellEditingTemplate>
+                            <DataTemplate >
+                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamType}}}" SelectedItem="{Binding Path=ParamType}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Path=ParamType}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                    
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Nickname" Width="*" Binding="{Binding Nickname}"/>
                     <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
-                    <DataGridTemplateColumn Header="Access" Width="*">
+
+                    <DataGridTemplateColumn Header="Access" Width="*" >
                         <DataGridTemplateColumn.CellEditingTemplate>
-                            <DataTemplate>
-                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamAccess}}}"/>
+                            <DataTemplate >
+                                <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamAccess}}}" SelectedItem="{Binding Path=Access}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellEditingTemplate>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock  Text="{Binding Path=Access}"></TextBlock>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
+
                 </DataGrid.Columns>
-
             </DataGrid>
-
         </StackPanel>
 
         <Button Style="{DynamicResource RoundedCornerButton}"

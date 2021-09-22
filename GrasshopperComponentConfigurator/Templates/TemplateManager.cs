@@ -39,6 +39,12 @@ namespace GrasshopperComponentConfigurator.Templates
                         case ParamType.Curve:
                             methodName = "AddCurveParameter";
                             break;
+                        case ParamType.Point:
+                            methodName = "AddPointParameter";
+                            break;
+                        case ParamType.Plane:
+                            methodName = "AddPlaneParameter";
+                            break;
                         default:
                             methodName = "AddGenericParameter";
                             break;
