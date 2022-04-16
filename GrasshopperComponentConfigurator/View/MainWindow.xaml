@@ -7,15 +7,17 @@
         xmlns:models="clr-namespace:GrasshopperComponentConfigurator.Models"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="548"
-        Width="500        "
+        ResizeMode="CanResizeWithGrip"
+        Width="500"
+        Height="550"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="{x:Null}"
-        MouseDown="MainWindow_OnMouseDown">
+        MouseDown="MainWindow_OnMouseDown"
+        >
 
-    <Grid Height="548" VerticalAlignment="Center">
+    <Grid MinHeight="548" VerticalAlignment="Center">
         <!--<Grid.Effect>
             <DropShadowEffect BlurRadius="20" Direction="315" ShadowDepth="10" Opacity="0.45"/>
         </Grid.Effect>-->
@@ -40,29 +42,37 @@
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,5,0">
             <Label Content="Name" FontSize="14" FontWeight="Bold" Foreground="White"/>
-            <TextBox Name="ComponentNameBox" Text ="{Binding Path=ComponentData.Name}"/>
+            <TextBox Name="ComponentNameBox" Text ="{Binding Path=ComponentData.Name}" VerticalContentAlignment="Center" Height="25"/>
             <Label Content="Nickname" FontSize="14" FontWeight="Bold" Foreground="White"/>
-            <TextBox Name="ComponentNicknameBox" Text ="{Binding Path=ComponentData.Nickname}"/>
+            <TextBox Name="ComponentNicknameBox" Text ="{Binding Path=ComponentData.Nickname}" VerticalContentAlignment="Center" Height="25"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0,0,0">
             <Label Content="Category" Foreground="White" FontWeight="Bold" FontSize="14"/>
-            <TextBox Name="ComponentCategoryBox" Text ="{Binding Path=ComponentData.Category}"/>
+            <TextBox Name="ComponentCategoryBox" Text ="{Binding Path=ComponentData.Category}" VerticalContentAlignment="Center" Height="25"/>
             <Label Content="Sub-category" Foreground="White" FontWeight="Bold" FontSize="14"/>
-            <TextBox Name="ComponentSubCategoryBox" Text ="{Binding Path=ComponentData.SubCategory}"/>
+            <TextBox Name="ComponentSubCategoryBox" Text ="{Binding Path=ComponentData.SubCategory}" VerticalContentAlignment="Center" Height="25"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <Label Content="Description" FontSize="14" FontWeight="Bold" Foreground="White"/>
-            <TextBox Name="ComponentDescriptionBox" Text ="{Binding Path=ComponentData.Description}"/>
+            <TextBox Name="ComponentDescriptionBox" Text ="{Binding Path=ComponentData.Description}" VerticalContentAlignment="Center" Height="25"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,0">
             <Label Content="Component Parameters" FontSize="14" FontWeight="Bold" Foreground="White" />
-            <DataGrid Name="ParametersDataGrid" ItemsSource= "{Binding ParameterData}" AutoGenerateColumns="False" CanUserAddRows="True" CanUserDeleteRows="True">
+            <DataGrid Name="ParametersDataGrid" 
+                      ItemsSource= "{Binding ParameterData}"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="True"
+                      CanUserDeleteRows="True"
+                      CanUserResizeRows="False"
+                      HorizontalGridLinesBrush="#D0D0D0"
+                      VerticalGridLinesBrush="#D0D0D0">
+
                 <DataGrid.Columns>
 
-                    <DataGridTemplateColumn Header="Usage" Width="*" >
+                    <DataGridTemplateColumn Header="Usage" Width="60" >
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate >
                                 <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:Usage}}}" SelectedItem="{Binding Path=Usage}"/>
@@ -75,7 +85,7 @@
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
-                    <DataGridTemplateColumn Header="Type" Width="*" >
+                    <DataGridTemplateColumn Header="Type" Width="60" >
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate >
                                 <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamType}}}" SelectedItem="{Binding Path=ParamType}"/>
@@ -87,12 +97,12 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    
+
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Nickname" Width="*" Binding="{Binding Nickname}"/>
                     <DataGridTextColumn Header="Description" Width="*" Binding="{Binding Description}"/>
 
-                    <DataGridTemplateColumn Header="Access" Width="*" >
+                    <DataGridTemplateColumn Header="Access" Width="60" >
                         <DataGridTemplateColumn.CellEditingTemplate>
                             <DataTemplate >
                                 <ComboBox ItemsSource="{Binding Source={local:EnumBindingSource {x:Type models:ParamAccess}}}" SelectedItem="{Binding Path=Access}"/>
@@ -100,12 +110,13 @@
                         </DataGridTemplateColumn.CellEditingTemplate>
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock  Text="{Binding Path=Access}"></TextBlock>
+                                <TextBlock Text="{Binding Path=Access}"></TextBlock>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
+
             </DataGrid>
         </StackPanel>
 
