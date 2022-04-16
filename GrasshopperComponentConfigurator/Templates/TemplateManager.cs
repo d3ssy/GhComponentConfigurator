@@ -49,8 +49,22 @@ namespace GrasshopperComponentConfigurator.Templates
                             methodName = "AddGenericParameter";
                             break;
                     }
-                    
-                    sb.AppendLine($"\t\t\t pManager.{methodName}.(\"{parameterData.Name}\", \"{parameterData.Nickname}\", \"{parameterData.Description}\", \"{parameterData.Access}\");");
+
+                    var paramAccess = parameterData.Access;
+                    var paramAccessStr = string.Empty;
+                    switch (paramAccess)
+                    {
+                        case ParamAccess.List:
+                            paramAccessStr = "GH_ParamAccess.List";
+                            break;
+                        case ParamAccess.Tree:
+                            paramAccessStr = "GH_ParamAccess.Tree";
+                            break;
+                        default:
+                            paramAccessStr = "GH_ParamAccess.Item";
+                            break;
+                    }
+                    sb.AppendLine($"\t\t\t pManager.{methodName}.(\"{parameterData.Name}\", \"{parameterData.Nickname}\", \"{parameterData.Description}\", {paramAccessStr});");
                 }
             }
 

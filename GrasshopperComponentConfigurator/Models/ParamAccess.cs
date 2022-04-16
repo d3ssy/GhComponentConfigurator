@@ -3,6 +3,7 @@
     public enum ParamAccess
     {
         List,
-        Item
+        Item,
+        Tree
     }
 }
