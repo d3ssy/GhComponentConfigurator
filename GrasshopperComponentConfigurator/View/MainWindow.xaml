@@ -38,29 +38,44 @@
             <ColumnDefinition Name="Col3" Width="20"/>
         </Grid.ColumnDefinitions>
 
-        <Border CornerRadius="35" BorderBrush="DimGray" Background="DarkGray" BorderThickness="2" Grid.RowSpan="4" Grid.ColumnSpan="4"/>
+        <Border CornerRadius="35" BorderThickness="5,5,5,5" Grid.RowSpan="4" Grid.ColumnSpan="4" BorderBrush="#FF454545">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,0.2" StartPoint="0.5,0">
+                    <LinearGradientBrush.RelativeTransform>
+                        <TransformGroup>
+                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                            <RotateTransform CenterY="0.5" CenterX="0.5"/>
+                            <TranslateTransform Y="0"/>
+                        </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop Color="#FFFEE3BD"/>
+                    <GradientStop Color="#FFFFA028" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="0,0,5,0">
-            <Label Content="Name" FontSize="14" FontWeight="Bold" Foreground="White"/>
+            <Label Content="Name" FontSize="18" FontWeight="Bold" Foreground="#FF3F3F3F" Background="Transparent"/>
             <TextBox Name="ComponentNameBox" Text ="{Binding Path=ComponentData.Name}" VerticalContentAlignment="Center" Height="25"/>
-            <Label Content="Nickname" FontSize="14" FontWeight="Bold" Foreground="White"/>
+            <Label Content="Nickname" FontSize="18" FontWeight="Bold" Foreground="#FF3F3F3F" Background="Transparent"/>
             <TextBox Name="ComponentNicknameBox" Text ="{Binding Path=ComponentData.Nickname}" VerticalContentAlignment="Center" Height="25"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="2" Margin="5,0,0,0">
-            <Label Content="Category" Foreground="White" FontWeight="Bold" FontSize="14"/>
+            <Label Content="Category" Foreground="#FF3F3F3F" FontWeight="Bold" FontSize="18" Background="Transparent"/>
             <TextBox Name="ComponentCategoryBox" Text ="{Binding Path=ComponentData.Category}" VerticalContentAlignment="Center" Height="25"/>
-            <Label Content="Sub-category" Foreground="White" FontWeight="Bold" FontSize="14"/>
+            <Label Content="Sub-category" Foreground="#FF3F3F3F" FontWeight="Bold" FontSize="18" Background="Transparent"/>
             <TextBox Name="ComponentSubCategoryBox" Text ="{Binding Path=ComponentData.SubCategory}" VerticalContentAlignment="Center" Height="25"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
-            <Label Content="Description" FontSize="14" FontWeight="Bold" Foreground="White"/>
+            <Label Content="Description" FontSize="18" FontWeight="Bold" Foreground="#FF3F3F3F" Background="Transparent"/>
             <TextBox Name="ComponentDescriptionBox" Text ="{Binding Path=ComponentData.Description}" VerticalContentAlignment="Center" Height="25"/>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,10,0,0">
-            <Label Content="Component Parameters" FontSize="14" FontWeight="Bold" Foreground="White" />
+            <Label Content="Parameters" FontSize="18" FontWeight="Bold" Foreground="#FF3F3F3F" Background="Transparent" />
             <DataGrid Name="ParametersDataGrid" 
                       ItemsSource= "{Binding ParameterData}"
                       AutoGenerateColumns="False"
@@ -121,15 +136,17 @@
         </StackPanel>
 
         <Button Style="{DynamicResource RoundedCornerButton}"
-                Height="50"
-                Content="GENERATE GH TEMPLATE"
                 Cursor="Hand"
-                Click="GenerateComponentTemplate_OnClick" 
-                VerticalAlignment="Top"
-                Grid.Column="0"
-                Grid.ColumnSpan ="4"
-                Grid.Row="4" 
-                Margin="55,25,55,0" Foreground="White" FontWeight="Bold" FontSize="14">
+                Click="GenerateComponentTemplate_OnClick"
+                Grid.Column="2"
+                Grid.Row="3" 
+                Margin="0,0,17,17" Foreground="White" FontWeight="Bold" FontSize="14" BorderThickness="5,5,5,5" Background="{x:Null}" Panel.ZIndex="1" Grid.ColumnSpan="2" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="47">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
         </Button>
     </Grid>
 

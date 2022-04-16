@@ -51,7 +51,7 @@ namespace GrasshopperComponentConfigurator.Templates
                     }
 
                     var paramAccess = parameterData.Access;
-                    var paramAccessStr = string.Empty;
+                    string paramAccessStr;
                     switch (paramAccess)
                     {
                         case ParamAccess.List:
