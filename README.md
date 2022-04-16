@@ -33,5 +33,6 @@ Finally, if designing a suite of components, it would be fantastic to be able to
 
 It is quite possible that the best solution is piggy-backing on Grasshopper's existing UI and creating a special template component that behaves as desired. This has the added benefit that they can be wired up to visually prototype how they work together or with other components. Generating their templates could be done on a component basis, or by selecting them and executing template generation from a plug-in.
 
-
+## Contribute
+If you want to colaborate reach out! Especially if you want to help designing the UI... It's a fun little project!
 
