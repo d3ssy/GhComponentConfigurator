@@ -1,5 +1,5 @@
 # GhComponentConfigurator
-A UI for configuring custom grasshopper components and automating boilerplate code generation to speed up development.
+POC for an app to configure custom grasshopper components and automating boilerplate code generation to speed up development.
 
 ## Usage
 https://user-images.githubusercontent.com/6257186/164010152-f9ab9876-993d-46c2-9930-7d33e3b9ca58.mp4
