@@ -9,12 +9,14 @@ A UI for configuring custom grasshopper components and automating boilerplate co
 5. Hit the green button to generate the boilerplate code.
 6. Revel in the joy of knowing minutes of your life have been saved!
 
-https://user-images.githubusercontent.com/6257186/163679628-163a9c1b-6a45-437c-a517-13e7b30f502b.mp4
+
 
 ## Current Functionality
 * Configure component attributes.
 * Configure input and output parameters.
 * Generates single component boilerplate.
+
+https://user-images.githubusercontent.com/6257186/164010152-f9ab9876-993d-46c2-9930-7d33e3b9ca58.mp4
 
 ## Future Functionality
 * Extend template to include boilerplate DataAccess code to facilitate validation of inputs in ```SolveInstance()```.
