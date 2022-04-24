@@ -1,6 +1,8 @@
 using Common.Data;
 using Grasshopper.Kernel;
+using Grasshopper.Kernel.Special;
 using System;
+using System.Drawing;
 
 namespace ComponentConfigurator
 {
@@ -30,7 +32,6 @@ namespace ComponentConfigurator
             pManager.AddTextParameter("Description", "D", "Component description.", GH_ParamAccess.item);
             pManager.AddTextParameter("Category", "C", "Component category.", GH_ParamAccess.item);
             pManager.AddTextParameter("Sub-category", "SC", "GH_ParamDataAccess type.", GH_ParamAccess.item);
-            pManager.AddTextParameter("Exposure", "E", "Component Exposure level.", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -55,18 +56,64 @@ namespace ComponentConfigurator
             if (!DA.GetData(2, ref description)) return;
             if (!DA.GetData(3, ref category)) return;
             if (!DA.GetData(4, ref subCategory)) return;
-            if (!DA.GetData(5, ref exposure)) return;
 
-            var paramData = new ComponentData() {
+            var paramData = new ComponentData()
+            {
                 Description = description,
                 Name = name,
                 Nickname = nickname,
                 Category = category,
-                SubCategory = subCategory                
+                SubCategory = subCategory
             };
 
             DA.SetData(0, paramData);
         }
+
+        public override void AddedToDocument(GH_Document document)
+        {
+            base.AddedToDocument(document);
+
+            for (int i = 0; i < Params.Input.Count; i++)
+            {
+                //add panels. one for each of the string input params.
+                var panelText = string.Empty;
+                switch (i)
+                {
+                    case (0):
+                        panelText = "ComponentName";
+                        break;
+                    case (1):
+                        panelText = "ComponentNickName";
+                        break;
+                    case (2):
+                        panelText = "ComponentDescritpion";
+                        break;
+                    case (3):
+                        panelText = "ComponentCategory";
+                        break;
+                    case (4):
+                        panelText = "ComponentSubCategory";
+                        break;
+                }
+
+                Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[i] as Grasshopper.Kernel.Parameters.Param_String;
+                if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
+                Attributes.PerformLayout();
+                int x = (int)in0str.Attributes.Pivot.X - 200;
+                int y = (int)in0str.Attributes.Pivot.Y - 10 + (i * 5);
+                var panel = new GH_Panel();
+                panel.CreateAttributes();
+                panel.Attributes.Pivot = new PointF(x, y);
+                panel.Attributes.Bounds = new RectangleF(x, y, 150, 20);
+                panel.UserText = panelText;
+                panel.Attributes.ExpireLayout();
+
+                document.AddObject(panel, false);
+                in0str.AddSource(panel);
+            }
+
+        }
+
 
         /// <summary>
         /// Provides an Icon for every component that will be visible in the User Interface.

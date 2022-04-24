@@ -116,7 +116,6 @@ namespace ComponentConfigurator
                     in0str.AddSource(panel);
                 }
 
-
                 //add 3 value lists. one for each of the enum input params.
                 if (i >= 3 && i <= 5)
                 {
@@ -146,7 +145,7 @@ namespace ComponentConfigurator
                     }
 
                     List<GH_ValueListItem> valueListItems = Enum.GetNames(enumType).
-                        Select(s => new GH_ValueListItem(s, s)).ToList();
+                        Select(s => new GH_ValueListItem(s, $"\"{s}\"")).ToList();
 
                     valList.ListItems.AddRange(valueListItems);
                     document.AddObject(valList, false);
