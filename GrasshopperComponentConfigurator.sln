@@ -3,11 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrasshopperComponentConfigurator", "GrasshopperComponentConfigurator\GrasshopperComponentConfigurator.csproj", "{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrasshopperComponentConfigurator", "GrasshopperComponentConfigurator\GrasshopperComponentConfigurator.csproj", "{B7813A3D-D8DB-4671-B2A7-1C2E7EB1862B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrasshopperComponentConfigurator.Tests", "GrasshopperComponentConfigurator.Tests\GrasshopperComponentConfigurator.Tests.csproj", "{09792416-40E5-4463-BCF2-6BD05DA79D22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrasshopperComponentConfigurator.Tests", "GrasshopperComponentConfigurator.Tests\GrasshopperComponentConfigurator.Tests.csproj", "{09792416-40E5-4463-BCF2-6BD05DA79D22}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComponentConfigurator", "ComponentConfigurator\ComponentConfigurator.csproj", "{18B5816E-A5B1-45CF-B5F1-DC4EF34562E7}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Common", "Common\Common.shproj", "{A9531D52-30C3-4181-9C25-F9DA42D391EB}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Common\Common.projitems*{18b5816e-a5b1-45cf-b5f1-dc4ef34562e7}*SharedItemsImports = 5
+		Common\Common.projitems*{a9531d52-30c3-4181-9c25-f9da42d391eb}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -21,6 +29,10 @@ Global
 		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09792416-40E5-4463-BCF2-6BD05DA79D22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18B5816E-A5B1-45CF-B5F1-DC4EF34562E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18B5816E-A5B1-45CF-B5F1-DC4EF34562E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18B5816E-A5B1-45CF-B5F1-DC4EF34562E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18B5816E-A5B1-45CF-B5F1-DC4EF34562E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
