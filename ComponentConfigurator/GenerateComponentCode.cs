@@ -102,11 +102,12 @@ namespace ComponentConfigurator
         {
             base.AddedToDocument(document);
             
+            //add button to boolean input.
             Param_Boolean in0str = Params.Input[Params.Input.Count - 1] as Param_Boolean;
             if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
             Attributes.PerformLayout();
-            int x = (int)in0str.Attributes.Pivot.X - 200;
-            int y = (int)in0str.Attributes.Pivot.Y - 5;
+            int x = (int)in0str.Attributes.Pivot.X - 150;
+            int y = (int)in0str.Attributes.Pivot.Y - 11;
             var panel = new GH_ButtonObject();
             panel.CreateAttributes();
             panel.Attributes.Pivot = new PointF(x, y);
