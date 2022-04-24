@@ -1,5 +1,6 @@
 using Common.Data;
 using Grasshopper.Kernel;
+using Grasshopper.Kernel.Parameters;
 using Grasshopper.Kernel.Special;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,8 @@ namespace ComponentConfigurator
             if (!DA.GetData(4, ref access) || !Enum.TryParse(access, out paramAccess)) return;
             if (!DA.GetData(5, ref type) || !Enum.TryParse(type, out paramType)) return;
 
-            var paramData = new ParamData() {
+            var paramData = new ParamData()
+            {
                 Access = paramAccess,
                 ParamType = paramType,
                 Description = description,
@@ -80,7 +82,7 @@ namespace ComponentConfigurator
         public override void AddedToDocument(GH_Document document)
         {
             base.AddedToDocument(document);
-            
+
             for (int i = 0; i < Params.Input.Count; i++)
             {
                 //add 3 panels. one for each of the string input params.
@@ -98,9 +100,9 @@ namespace ComponentConfigurator
                         case (2):
                             panelText = "ParameterDescritpion";
                             break;
-                    }                    
+                    }
 
-                    Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[i] as Grasshopper.Kernel.Parameters.Param_String;
+                    Param_String in0str = Params.Input[i] as Param_String;
                     if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
                     Attributes.PerformLayout();
                     int x = (int)in0str.Attributes.Pivot.X - 200;
@@ -119,7 +121,7 @@ namespace ComponentConfigurator
                 //add 3 value lists. one for each of the enum input params.
                 if (i >= 3 && i <= 5)
                 {
-                    Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[i] as Grasshopper.Kernel.Parameters.Param_String;
+                    Param_String in0str = Params.Input[i] as Param_String;
                     if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
                     Attributes.PerformLayout();
                     int x = (int)in0str.Attributes.Pivot.X - 200;

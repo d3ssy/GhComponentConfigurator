@@ -8,6 +8,7 @@ using ComponentConfigurator.Templates;
 using Grasshopper.Kernel.Types;
 using Grasshopper.Kernel.Special;
 using System.Drawing;
+using Grasshopper.Kernel.Parameters;
 
 namespace ComponentConfigurator
 {
@@ -101,7 +102,7 @@ namespace ComponentConfigurator
         {
             base.AddedToDocument(document);
             
-            Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[Params.Input.Count -1] as Grasshopper.Kernel.Parameters.Param_String;
+            Param_Boolean in0str = Params.Input[Params.Input.Count - 1] as Param_Boolean;
             if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
             Attributes.PerformLayout();
             int x = (int)in0str.Attributes.Pivot.X - 200;

@@ -1,5 +1,6 @@
 using Common.Data;
 using Grasshopper.Kernel;
+using Grasshopper.Kernel.Parameters;
 using Grasshopper.Kernel.Special;
 using System;
 using System.Drawing;
@@ -96,7 +97,7 @@ namespace ComponentConfigurator
                         break;
                 }
 
-                Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[i] as Grasshopper.Kernel.Parameters.Param_String;
+                Param_String in0str = Params.Input[i] as Param_String;
                 if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
                 Attributes.PerformLayout();
                 int x = (int)in0str.Attributes.Pivot.X - 200;
