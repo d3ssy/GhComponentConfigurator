@@ -103,7 +103,7 @@ namespace ComponentConfigurator
         {
             base.AddedToDocument(document);
             
-            Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[Params.Count() -1] as Grasshopper.Kernel.Parameters.Param_String;
+            Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[Params.Input.Count -1] as Grasshopper.Kernel.Parameters.Param_String;
             if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
             Attributes.PerformLayout();
             int x = (int)in0str.Attributes.Pivot.X - 200;
