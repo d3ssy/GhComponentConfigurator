@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using ComponentConfigurator.Templates;
 using Grasshopper.Kernel.Types;
+using Grasshopper.Kernel.Special;
+using System.Drawing;
 
 namespace ComponentConfigurator
 {
@@ -95,6 +97,25 @@ namespace ComponentConfigurator
                 File.Delete(filePath);
             }
             File.WriteAllText(filePath, templateString);
+        }
+
+        public override void AddedToDocument(GH_Document document)
+        {
+            base.AddedToDocument(document);
+            
+            Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[Params.Count() -1] as Grasshopper.Kernel.Parameters.Param_String;
+            if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
+            Attributes.PerformLayout();
+            int x = (int)in0str.Attributes.Pivot.X - 200;
+            int y = (int)in0str.Attributes.Pivot.Y - 5;
+            var panel = new GH_ButtonObject();
+            panel.CreateAttributes();
+            panel.Attributes.Pivot = new PointF(x, y);
+            panel.Attributes.Bounds = new RectangleF(x, y, 150, 20);
+            panel.Attributes.ExpireLayout();
+
+            document.AddObject(panel, false);
+            in0str.AddSource(panel);
         }
 
         /// <summary>
