@@ -2,11 +2,11 @@
 {
     public enum ParamType
     {
-        Point,
+        Generic,
         Curve,
-        Plane,
         Number,
-        Text,
-        Generic
+        Plane,
+        Point,
+        Text
     }
 }

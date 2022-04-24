@@ -2,8 +2,8 @@
 {
     public enum ParamAccess
     {
-        List,
         Item,
+        List,        
         Tree
     }
 }
