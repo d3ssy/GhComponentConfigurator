@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+    <Version>1.0</Version>
+    <Title>ComponentConfigurator</Title>
+    <Description>Description of ComponentConfigurator</Description>
+    <TargetExt>.gha</TargetExt>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Grasshopper" Version="7.13.21348.13001" IncludeAssets="compile;build" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Update="Templates\GrasshopperComponent.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GrasshopperComponent.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Update="Templates\GrasshopperComponent.tt">
+      <LastGenOutput>GrasshopperComponent.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </None>
+  </ItemGroup>
+  
+  <PropertyGroup Condition="$(Configuration) == 'Debug' AND $([MSBuild]::IsOSPlatform(Windows))">
+    <StartProgram>C:\Program Files\Rhino 7\System\Rhino.exe</StartProgram>
+    <StartArguments></StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+  
+  <Import Project="..\Common\Common.projitems" Label="Shared" />
+
+</Project>

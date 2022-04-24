@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a9531d52-30c3-4181-9c25-f9da42d391eb</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Common</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ComponentDefinition.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ComponentData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ParamAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ParamData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ParamType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\Usage.cs" />
+  </ItemGroup>
+</Project>

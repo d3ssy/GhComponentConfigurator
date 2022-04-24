@@ -1,23 +1,18 @@
 ﻿using System;
-using GrasshopperComponentConfigurator.Models;
 using System.Text;
+using Common.Data;
 
-namespace GrasshopperComponentConfigurator.Templates
+namespace ComponentConfigurator.Templates
 {
     //Note this is a partial class of the generated class once .tt template is saved.
     //This is where we can add logic to set the templates variable text etc.
     public partial class GrasshopperComponent
     {
-        private readonly ComponentData _data;
+        private readonly ComponentDefinition _componentDefinition;
 
-        public GrasshopperComponent()
+        public GrasshopperComponent(ComponentDefinition componentDefinition)
         {
-
-        }
-
-        public GrasshopperComponent(ComponentData data)
-        {
-            _data = data;
+            _componentDefinition = componentDefinition;
         }
 
         public string AddParameterMethodsString(Usage paramUsage)
@@ -25,7 +20,7 @@ namespace GrasshopperComponentConfigurator.Templates
             //E.g. output: "pManager.AddTextParameter("name", "nickname", "description", access);"
             var sb = new StringBuilder();
 
-            foreach (var parameterData in _data.Parameters)
+            foreach (var parameterData in _componentDefinition.Parameters)
             {
                 if (parameterData.Usage == paramUsage)
                 {

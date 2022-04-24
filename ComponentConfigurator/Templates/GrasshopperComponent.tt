@@ -1,0 +1,51 @@
+﻿<#@ template language="C#" #>
+<#@ output extension=".cs" #>
+<#@ import namespace = "Common.Data" #>
+
+using Grasshopper.Kernel;
+using Rhino.Geometry;
+using System;
+using System.Collections.Generic;
+
+namespace GrasshopperComponentNamespace
+{
+    public class GrasshopperComponent : GH_Component
+    {
+        public GrasshopperComponent()
+          : base("<#= _componentDefinition.ComponentData.Name #>",
+          "<#= _componentDefinition.ComponentData.Nickname #>",
+          "<#= _componentDefinition.ComponentData.Description #>",
+          "<#= _componentDefinition.ComponentData.Category #>", 
+          "<#= _componentDefinition.ComponentData.SubCategory #>")
+        {
+        }
+
+        protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
+        {
+<#= AddParameterMethodsString(Usage.Input) #>
+        }
+
+        protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
+        {
+<#= AddParameterMethodsString(Usage.Output) #>
+        }
+
+        protected override void SolveInstance(IGH_componentDefinition.Parameters.Access DA)
+        {
+
+        }
+
+        protected override System.Drawing.Bitmap Icon
+        {
+            get
+            {
+                return null;
+            }
+        }
+
+        public override Guid ComponentGuid
+        {
+            get { return new Guid("<#= GetNewGuidString()#>"); }
+        }
+    }
+}
