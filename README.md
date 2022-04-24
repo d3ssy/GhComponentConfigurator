@@ -2,9 +2,10 @@
 POC for an app to configure custom grasshopper components and automating boilerplate code generation to speed up development.
 
 ## Usage
+### External App and UI
 https://user-images.githubusercontent.com/6257186/164010152-f9ab9876-993d-46c2-9930-7d33e3b9ca58.mp4
 
-### Alternative UI with Custom GH Components
+### Alternative Implementation : Custom GH Components
 ![GhComponentConfigurator_GHUI](https://user-images.githubusercontent.com/6257186/164966045-27b45d65-b05a-4051-8c54-12726985f639.png)
 
 ## Current Functionality
