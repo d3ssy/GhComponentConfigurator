@@ -76,7 +76,7 @@ namespace GrasshopperComponentNamespace
                     "H_Component.GH_InputParamManager pManager)\r\n        {\r\n");
             
             #line 25 "C:\Users\g.maciocci\source\repos\GrasshopperComponentConfigurator\ComponentConfigurator\Templates\GrasshopperComponent.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AddParameterMethodsString(Usage.Input)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AddParameterMethodsString(ParamUsage.Input)));
             
             #line default
             #line hidden
@@ -84,7 +84,7 @@ namespace GrasshopperComponentNamespace
                     "GH_OutputParamManager pManager)\r\n        {\r\n");
             
             #line 30 "C:\Users\g.maciocci\source\repos\GrasshopperComponentConfigurator\ComponentConfigurator\Templates\GrasshopperComponent.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AddParameterMethodsString(Usage.Output)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AddParameterMethodsString(ParamUsage.Output)));
             
             #line default
             #line hidden

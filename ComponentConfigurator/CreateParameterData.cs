@@ -1,6 +1,10 @@
 using Common.Data;
 using Grasshopper.Kernel;
+using Grasshopper.Kernel.Special;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
 
 namespace ComponentConfigurator
 {
@@ -52,7 +56,7 @@ namespace ComponentConfigurator
 
             ParamAccess paramAccess;
             ParamType paramType;
-            Usage paramUsage;
+            ParamUsage paramUsage;
 
             if (!DA.GetData(0, ref name)) return;
             if (!DA.GetData(1, ref nickname)) return;
@@ -71,6 +75,84 @@ namespace ComponentConfigurator
             };
 
             DA.SetData(0, paramData);
+        }
+
+        public override void AddedToDocument(GH_Document document)
+        {
+            base.AddedToDocument(document);
+            
+            for (int i = 0; i < Params.Input.Count; i++)
+            {
+                //add 3 panels. one for each of the string input params.
+                if (i < 3)
+                {
+                    var panelText = string.Empty;
+                    switch (i)
+                    {
+                        case (0):
+                            panelText = "ParameterName";
+                            break;
+                        case (1):
+                            panelText = "ParameterNickName";
+                            break;
+                        case (2):
+                            panelText = "ParameterDescritpion";
+                            break;
+                    }                    
+
+                    Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[i] as Grasshopper.Kernel.Parameters.Param_String;
+                    if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
+                    Attributes.PerformLayout();
+                    int x = (int)in0str.Attributes.Pivot.X - 200;
+                    int y = (int)in0str.Attributes.Pivot.Y - 10 + (i * 5);
+                    var panel = new GH_Panel();
+                    panel.CreateAttributes();
+                    panel.Attributes.Pivot = new PointF(x, y);
+                    panel.Attributes.Bounds = new RectangleF(x, y, 150, 20);
+                    panel.UserText = panelText;
+                    panel.Attributes.ExpireLayout();
+
+                    document.AddObject(panel, false);
+                    in0str.AddSource(panel);
+                }
+
+
+                //add 3 value lists. one for each of the enum input params.
+                if (i >= 3 && i <= 5)
+                {
+                    Grasshopper.Kernel.Parameters.Param_String in0str = Params.Input[i] as Grasshopper.Kernel.Parameters.Param_String;
+                    if (in0str == null || in0str.SourceCount > 0 || in0str.PersistentDataCount > 0) return;
+                    Attributes.PerformLayout();
+                    int x = (int)in0str.Attributes.Pivot.X - 200;
+                    int y = (int)in0str.Attributes.Pivot.Y - 10 + (i * 5);
+                    GH_ValueList valList = new GH_ValueList();
+                    valList.CreateAttributes();
+                    valList.Attributes.Pivot = new PointF(x, y);
+                    valList.Attributes.ExpireLayout();
+                    valList.ListItems.Clear();
+
+                    System.Type enumType = null;
+                    switch (i)
+                    {
+                        case (3):
+                            enumType = typeof(ParamUsage);
+                            break;
+                        case (4):
+                            enumType = typeof(ParamAccess);
+                            break;
+                        case (5):
+                            enumType = typeof(ParamType);
+                            break;
+                    }
+
+                    List<GH_ValueListItem> valueListItems = Enum.GetNames(enumType).
+                        Select(s => new GH_ValueListItem(s, s)).ToList();
+
+                    valList.ListItems.AddRange(valueListItems);
+                    document.AddObject(valList, false);
+                    in0str.AddSource(valList);
+                }
+            }
         }
 
         /// <summary>

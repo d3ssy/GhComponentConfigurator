@@ -15,7 +15,7 @@ namespace ComponentConfigurator.Templates
             _componentDefinition = componentDefinition;
         }
 
-        public string AddParameterMethodsString(Usage paramUsage)
+        public string AddParameterMethodsString(ParamUsage paramUsage)
         {
             //E.g. output: "pManager.AddTextParameter("name", "nickname", "description", access);"
             var sb = new StringBuilder();

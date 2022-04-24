@@ -1,6 +1,6 @@
 ﻿namespace Common.Data
 {
-    public enum Usage
+    public enum ParamUsage
     {
         Input,
         Output

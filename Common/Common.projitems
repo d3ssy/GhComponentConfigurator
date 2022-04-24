@@ -14,6 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Data\ParamAccess.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ParamData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Data\ParamType.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Data\Usage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Data\ParamUsage.cs" />
   </ItemGroup>
 </Project>
