@@ -34,9 +34,7 @@ namespace ComponentConfigurator
         {
             pManager.AddTextParameter("Output Directory", "D", "Filepath to output directory.", GH_ParamAccess.item);
             pManager.AddGenericParameter("Component Definition", "CD", "ComponentDefinition for this component.", GH_ParamAccess.item);
-            pManager.AddBooleanParameter("Generate", "G", "Generates .cs code files in spefified dir.", GH_ParamAccess.item, false);
-
-        
+            pManager.AddBooleanParameter("Generate", "G", "Generates .cs code files in spefified dir.", GH_ParamAccess.item);
         }
 
         /// <summary>
