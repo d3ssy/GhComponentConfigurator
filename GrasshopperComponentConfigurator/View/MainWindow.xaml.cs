@@ -29,6 +29,12 @@ namespace GrasshopperComponentConfigurator.View
                 var path = saveFileDialog.FileName;
                 _viewModel.WriteTemplateToFile(_viewModel.GenerateTemplate(), path);
             }
+            CloseButton.IsEnabled = true;
+        }
+
+        private void CloseWindow_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)

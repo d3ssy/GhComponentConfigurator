@@ -2,11 +2,10 @@
 {
     public enum ParamType
     {
-        Point,
-        Curve,
-        Plane,
-        Number,
-        Text,
-        Generic
+        Generic, Angle, Arc, Bool, Box, Brep,
+        Circle, Colour, ComplexNumber, Curve,
+        Geometry, Integer, Interval, Line, Matrix,
+        Mesh, Number, Path, Point, Plane, Rectangle,
+        SubD, Surface, Text, Transform, Vector
     }
 }
