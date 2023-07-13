@@ -16,6 +16,7 @@ namespace GrasshopperComponentConfigurator.View
             InitializeComponent();
             _viewModel = new MainViewModel();
             this.DataContext = _viewModel;
+            this.MouseDown += CloseWindow;
         }
 
         private void GenerateComponentTemplate_OnClick(object sender, RoutedEventArgs e)
@@ -29,6 +30,19 @@ namespace GrasshopperComponentConfigurator.View
                 var path = saveFileDialog.FileName;
                 _viewModel.WriteTemplateToFile(_viewModel.GenerateTemplate(), path);
             }
+        }
+
+        private void CloseWindow_OnClick(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CloseWindow(object sender, MouseEventArgs e)
+        {
+            if (CloseButton.IsEnabled == false && e.RightButton == MouseButtonState.Pressed)
+                CloseButton.IsEnabled = true;
+            else if (CloseButton.IsEnabled == true && e.RightButton == MouseButtonState.Pressed)
+                CloseButton.IsEnabled = false;
         }
 
         private void MainWindow_OnMouseDown(object sender, MouseButtonEventArgs e)

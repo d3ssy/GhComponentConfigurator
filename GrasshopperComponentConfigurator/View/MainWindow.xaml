@@ -8,14 +8,57 @@
         mc:Ignorable="d"
         Title="MainWindow"
         ResizeMode="CanResizeWithGrip"
-        Width="500"
+        Width="494"
+        MinWidth="500"
+        MaxWidth="1200"
         Height="550"
+        MinHeight="550"
+        MaxHeight="550"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="{x:Null}"
         MouseDown="MainWindow_OnMouseDown"
         >
+    <Window.Resources>
+        <Style x:Key="CloseStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" Background="Red" BorderBrush="#FF454545" BorderThickness="5" CornerRadius="20" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Yellow"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF454545"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Orange"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF454545"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="Gray"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FF454545"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
 
     <Grid MinHeight="548" VerticalAlignment="Center">
         <!--<Grid.Effect>
@@ -83,7 +126,7 @@
                       CanUserDeleteRows="True"
                       CanUserResizeRows="False"
                       HorizontalGridLinesBrush="#D0D0D0"
-                      VerticalGridLinesBrush="#D0D0D0">
+                      VerticalGridLinesBrush="#D0D0D0" Height="252">
 
                 <DataGrid.Columns>
 
@@ -135,12 +178,25 @@
             </DataGrid>
         </StackPanel>
 
-        <Button Style="{DynamicResource RoundedCornerButton}"
+        <Button x:Name="Save" Style="{DynamicResource RoundedCornerButton}"
                 Cursor="Hand"
                 Click="GenerateComponentTemplate_OnClick"
                 Grid.Column="2"
                 Grid.Row="3" 
-                Margin="0,0,17,17" Foreground="White" FontWeight="Bold" FontSize="14" BorderThickness="5,5,5,5" Background="{x:Null}" Panel.ZIndex="1" Grid.ColumnSpan="2" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="47">
+                Margin="0,0,17,17" Foreground="White" FontWeight="Bold" FontSize="14" BorderThickness="5,5,5,5" Background="{x:Null}" Panel.ZIndex="1" Grid.ColumnSpan="2" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="30">
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+        <Button x:Name="CloseButton" Style="{DynamicResource CloseStyle}"
+            Cursor="Hand"
+            Click="CloseWindow_OnClick"
+            Grid.Column="1"
+            Grid.Row="3" 
+            Margin="0,0,183,17" Foreground="White" FontWeight="Bold" FontSize="14" BorderThickness="5,5,5,5" Background="{x:Null}" Panel.ZIndex="1" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="30" IsEnabled="False">
             <Button.BorderBrush>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="Black"/>
